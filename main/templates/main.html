@@ -1,10 +1,31 @@
-<h1>exotiq</h1>
+<!DOCTYPE html>
+<head>
+    <title>exotiq</title>
+</head>
+<body>
+    <header>
+        <h1> Welcome to exotique</h1>
+        <h3> <i> Curating Exotic Beauty, Redefining Luxury </i></h3>
+    </header>
+    <h2> Our Items </h2>
+    <ul>
+        {% for item in Items %}
+        <li>
+            <div class="Items">
+                <h3>{{ item.name }}</h3>
+                <p><i> {{ item.description }} </i></p>
+                <p>Price: Rp {{ item.price }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <p>  <i> 2024 exotique  - All Rights Reserved </i> </p>
+</body>
+</html>
 
-...
-<h5>NPM: </h5>
-<p>{{ npm }}<p>
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class  }}<p>
-...
+<!-- <h1>exotiq</h1>
+
+<p><strong>Name:</strong> Lanvin Black Gold Pencil Cat Leather Shoulder Bag</p>
+<p><strong>Price:</strong> Rp 54.500.000</p>
+<p><strong>Description:</strong> The Pencil Cat is embellished with a precious sculptural handle.</p> -->
