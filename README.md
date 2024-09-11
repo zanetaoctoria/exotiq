@@ -1,3 +1,9 @@
+Nama : Rebecca Zaneta Octoria Hutajulu
+NPM : 2306275065
+Kelas : PBP-E
+
+TUGAS 2 
+
 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
 
 - Buat direktori proyek bernama exotique dan install dependencies termasuk Django.
