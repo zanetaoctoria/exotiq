@@ -26,11 +26,11 @@ TUGAS 2
 
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-- <img src="bagantugas2.png">
+<img src="bagantugas2.png">
 
 3. Jelaskan fungsi git dalam pengembangan perangkat lunak!
 
-Git merupakan sistem kontrol yang berfungsi untuk melacak perubahan dalam kode utama selama pengembangan perangkat lunak.
+- Git merupakan sistem kontrol yang berfungsi untuk melacak perubahan dalam kode utama selama pengembangan perangkat lunak.
 
 4. Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
 
