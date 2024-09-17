@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <head>
     <title>exotiq</title>
@@ -14,7 +16,8 @@
     </header>
     <h2> Our Items </h2>
     <ul>
-        {% for item in Items %}
+
+        {% for item in items %}
         <li>
             <div class="Items">
                 <h3>{{ item.name }}</h3>
@@ -25,9 +28,41 @@
         {% endfor %}
     </ul>
     
+    {% if not item_entries %}
+    <p>Belum ada data product pada exotiq.</p>
+    {% else %}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+      </tr>
+    
+      {% comment %} Berikut cara memperlihatkan data product di bawah baris ini 
+      {% endcomment %} 
+      {% for item_entry in items_entries %}
+      <tr>
+        <td>{{item_entry.name}}</td>
+        <td>{{item_entry.price}}</td>
+        <td>{{item_entry.description}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    
+    <br />
+    
+    <a href="{% url 'main:create_items_entry' %}">
+      <button>Add New Item Entry</button>
+    </a>    
     <p>  <i> 2024 exotique  - All Rights Reserved </i> </p>
 </body>
 </html>
+
+
+{% endblock content %}
+
+
 
 <!-- <h1>exotiq</h1>
 

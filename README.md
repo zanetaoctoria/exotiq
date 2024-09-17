@@ -42,6 +42,54 @@ TUGAS 2
 - Pada Django, model disebut sebagai ORM karena menyediakan lapisan abstraksi yang menghubungkan objek Python dengan tabel di database relasional. Ini memungkinkan pengguna berinteraksi dengan database menggunakan kode Python tanpa perlu menulis SQL secara manual.
 
 
+TUGAS 3
+
+1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+- Data delivery diperlukan untuk memastikan bahwa data dapat dikirimkan, diterima, dan diakses pengguna dan sistem lain. Hal ini membantu pengguna cepat membuat keputusan berdasarkan data dan menjadikan platform mudah dan cepat untuk digunakan. Data delivery juga membantu menjaga informasi tetap sinkron, menjaga data tetap sama, dan mendukung aktivitas utama seperti menganalisis, memeriksa, dan membiarkan orang atau sistem berbicara satu sama lain.
+
+2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+- JSON lebih sederhana, ringan, dan mudah ditangani dibanding XML, dengan sintaks lebih ringkas, ukuran lebih kecil, dan lebih cepat dipahami web. JSON populer karena kompatibel dengan JavaScript, mendukung tipe data modern, dan mudah digunakan di layanan web seperti REST sementara XML digunakan untuk kasus khusus yang butuh pemeriksaan detail.
+
+3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+- Method `is_valid()` dalam formulir Django memeriksa apakah data yang dikirim valid. Jika informasi mengikuti instruksi yang diberikan, method ini memberikan `True`, dan jika ada kesalahan, memberikan `False`. Method ini sangat penting untuk mengecek apakah data yang dimasukkan akurat dan aman sebelum digunakan/disimpan.
+
+4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+-Kita membutuhkan `csrf_token` di form Django untuk menghindari serangan **Cross-Site Request Forgery (CSRF)**, di mana penyerang bisa memaksa pengguna yang sudah login untuk melakukan tindakan tanpa izin `csrf_token` mencegah hal ini dengan memverifikasi apakah setiap permintaan form berasal dari sumber yang valid.
+
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+- Saya memulai dengan membuat folder templates, mengisi dengan base template untuk kerangka umum, dan mengonfigurasi templates di settings.py. Kemudian, saya menambahkan ID di models.py dengan mengimpor uuid untuk meningkatkan keamanan, lalu melakukan migrations.
+
+- Saya membuat file forms.py dan mendefinisikan joshShopEntryForm sesuai dengan model dan fields di models.py. Di views.py, saya menambahkan fungsi create_item_entry untuk otomatis menambahkan data item ketika form disubmit, dan mengubah show_main agar menampilkan semua objek dari database di halaman utama.
+
+- Setelah itu, saya membuat create_item_entry.html di folder templates yang memperluas base.html, dan mengubah main.html untuk menampilkan item baru yang diinput user. Path URL untuk create_item_entry ditambahkan di urls.py agar fungsinya bisa diakses.
+
+- Saya juga menambahkan fungsi show_xml dan show_json di views.py untuk menampilkan data dalam format XML atau JSON, serta menambahkan show_xml_by_id dan show_json_by_id untuk filter data berdasarkan ID. Terakhir, saya memperbarui urls.py dengan path untuk fungsi-fungsi tersebut.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
