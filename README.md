@@ -54,7 +54,8 @@ TUGAS 3
 - Method `is_valid()` dalam formulir Django memeriksa apakah data yang dikirim valid. Jika informasi mengikuti instruksi yang diberikan, method ini memberikan `True`, dan jika ada kesalahan, memberikan `False`. Method ini sangat penting untuk mengecek apakah data yang dimasukkan akurat dan aman sebelum digunakan/disimpan.
 
 4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
--Kita membutuhkan `csrf_token` di form Django untuk menghindari serangan **Cross-Site Request Forgery (CSRF)**, di mana penyerang bisa memaksa pengguna yang sudah login untuk melakukan tindakan tanpa izin `csrf_token` mencegah hal ini dengan memverifikasi apakah setiap permintaan form berasal dari sumber yang valid.
+
+- Kita membutuhkan `csrf_token` di form Django untuk menghindari serangan **Cross-Site Request Forgery (CSRF)**, di mana penyerang bisa memaksa pengguna yang sudah login untuk melakukan tindakan tanpa izin `csrf_token` mencegah hal ini dengan memverifikasi apakah setiap permintaan form berasal dari sumber yang valid.
 
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
