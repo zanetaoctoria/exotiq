@@ -68,6 +68,13 @@ TUGAS 3
 
 - Saya juga menambahkan fungsi show_xml dan show_json di views.py untuk menampilkan data dalam format XML atau JSON, serta menambahkan show_xml_by_id dan show_json_by_id untuk filter data berdasarkan ID. Terakhir, saya memperbarui urls.py dengan path untuk fungsi-fungsi tersebut.
 
+6. Bukti screenshots
+<img src="xml.jpg">
+<img src="json.jpg">
+<img src="xmlid.jpg">
+<img src="jsonid.jpg">
+
+
 
 
 
