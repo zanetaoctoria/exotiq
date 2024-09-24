@@ -105,7 +105,7 @@ Method `is_valid()` digunakan untuk memeriksa apakah data yang dimasukkan ke dal
   ![JSON by ID](jsonid.jpg)
 
 ---
-</details> <details> <details> <summary>Tugas 4</summary>
+</details> <details> <summary>Tugas 4</summary>
 
 # TUGAS 4  
 
