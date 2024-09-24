@@ -1,6 +1,6 @@
-Here’s your cleaned-up README:
-
----
+Nama : Rebecca Zaneta Octoria Hutajulu
+NPM : 2306275065
+Kelas : PBP-E
 
 # TUGAS 2
 
@@ -101,6 +101,3 @@ Method `is_valid()` digunakan untuk memeriksa apakah data yang dimasukkan ke dal
 - JSON by ID  
   ![JSON by ID](jsonid.jpg)
 
----
-
-Let me know if you'd like to add or change anything!
