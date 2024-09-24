@@ -57,7 +57,7 @@ Pada Django, model disebut sebagai **ORM (Object-Relational Mapping)** karena me
 
 ---
 
-<details> <summary>Tugas 3</summary>
+</details> <details> <summary>Tugas 3</summary>
 
 # TUGAS 3
 
