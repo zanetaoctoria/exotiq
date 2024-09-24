@@ -1,5 +1,7 @@
 Nama : Rebecca Zaneta Octoria Hutajulu
+
 NPM : 2306275065
+
 Kelas : PBP-E
 
 <details> <summary>Tugas 2</summary>
@@ -33,7 +35,6 @@ Kelas : PBP-E
   Buat routing di `urls.py` aplikasi `main` untuk menghubungkan URL dengan fungsi di `views.py`.
 
 - **Deployment ke PWS**  
-  Lakukan deployment ke PWS untuk membuat aplikasi dapat diakses secara online.
 
 ## 2. Bagan Alur Request dan Response Django
 
@@ -104,6 +105,7 @@ Method `is_valid()` digunakan untuk memeriksa apakah data yang dimasukkan ke dal
   ![JSON by ID](jsonid.jpg)
 
 ---
+</details> <details> <details> <summary>Tugas 4</summary>
 
 # TUGAS 4  
 
@@ -123,21 +125,19 @@ Ketika pengguna login, sistem akan memvalidasi kredensial mereka melalui proses 
 Django mengingat pengguna yang sudah login melalui sistem sesi yang menggunakan cookies. Setelah login, Django membuat sesi unik dan menyimpan ID sesi dalam cookie di browser. Setiap kali pengguna mengakses server, cookie ini dikirim kembali untuk mengidentifikasi pengguna yang sudah login. Selain autentikasi, cookies juga digunakan untuk menyimpan preferensi, melacak aktivitas, dan mengelola konten. Namun, cookies bisa rentan terhadap serangan seperti XSS, sehingga penting untuk menggunakannya dengan aman menggunakan atribut seperti HttpOnly dan Secure serta menghindari menyimpan informasi sensitif.
 
 ## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step 
-- Buat halaman **register.html** dan **login.html** di `templates` (main) untuk menampilkan form registrasi dan login.
+- Saya membuat halaman **register.html** dan **login.html** di `templates` (main) untuk menampilkan form registrasi dan login.
 - Implementasikan form registrasi dengan mengimpor **UserCreationForm** dan **messages** di `views.py` untuk menampilkan pesan keberhasilan saat user dibuat.
 - Buat fungsi **register** di `views.py` untuk merender halaman registrasi (`register.html`).
 - Buat fungsi login dengan mengimpor **authenticate** dan **login**, serta buat fungsi **login_user** untuk merender halaman login (`login.html`).
-- Tambahkan fungsi **logout_user** di `views.py`, menggunakan **logout**, untuk mengarahkan user kembali ke halaman login setelah logout.
-- Tambahkan tombol **logout** di `main.html` yang memanggil fungsi **logout_user** untuk logout user.
-- Gunakan decorator **@login_required** pada fungsi **show_main** agar user harus login sebelum mengakses halaman utama.
+- Tambahkan fungsi **logout_user** di `views.py`, menggunakan **logout**, untuk mengarahkan user kembali ke halaman login setelah logout, menambahkan tombol **logout** di `main.html` yang memanggil fungsi **logout_user** untuk logout user.
+- Menggunakan **@login_required** pada fungsi **show_main** agar user harus login sebelum mengakses halaman utama.
 - Konfigurasi semua fungsi di **urls.py** dengan menambahkannya ke dalam **urlpatterns** untuk mengaktifkan fungsi-fungsi tersebut.
-- Jalankan program dan lakukan percobaan pendaftaran user baru dengan form registrasi.
-- Atur **cookie** saat fungsi **login_user** dijalankan dan hapus cookie saat user logout untuk melacak kapan user terakhir login.
+- Mengatur **cookie** saat fungsi **login_user** dijalankan dan hapus cookie saat user logout untuk melacak kapan user terakhir login.
 - Tampilkan informasi login terakhir di halaman **show_main** dan render di **main.html**.
-- Hubungkan model **Product** dengan **User** di `models.py` menggunakan **ForeignKey**, dengan mengimpor model **User**.
+- Menghubungkan model **Product** dengan **User** di `models.py` menggunakan **ForeignKey**, dengan mengimpor model **User**.
 - Modifikasi fungsi **create_item_entry** di `views.py` untuk mengaitkan item dengan user yang login sebelum menyimpannya ke database.
-- Filter produk yang ditampilkan di **show_main** berdasarkan user yang sedang login.
-- Lakukan **migrations** setelah perubahan, impor **os**, dan sesuaikan variabel **DEBUG** di `settings.py` agar siap untuk environment production.
+- Memfilter produk yang ditampilkan di **show_main** berdasarkan user yang sedang login.
+- Mengimpor **os**, dan sesuaikan variabel **DEBUG** di `settings.py` 
 
 
 
