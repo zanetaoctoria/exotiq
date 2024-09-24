@@ -2,6 +2,8 @@ Nama : Rebecca Zaneta Octoria Hutajulu
 NPM : 2306275065
 Kelas : PBP-E
 
+<details> <summary>Tugas 2</summary>
+
 # TUGAS 2
 
 ## 1. Implementasi Checklist Step-by-Step:
@@ -54,6 +56,8 @@ Git merupakan sistem kontrol yang berfungsi untuk melacak perubahan dalam kode u
 Pada Django, model disebut sebagai **ORM (Object-Relational Mapping)** karena menyediakan lapisan abstraksi yang menghubungkan objek Python dengan tabel di database relasional. Ini memungkinkan pengguna berinteraksi dengan database menggunakan kode Python tanpa perlu menulis SQL secara manual.
 
 ---
+
+<details> <summary>Tugas 3</summary>
 
 # TUGAS 3
 
