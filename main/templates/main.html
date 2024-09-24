@@ -54,7 +54,14 @@
     
     <a href="{% url 'main:create_items_entry' %}">
       <button>Add New Item Entry</button>
-    </a>    
+    </a> 
+
+    <a href="{% url 'main:logout' %}">
+      <button>Logout</button>
+    </a>
+    
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
+
     <p>  <i> 2024 exotique  - All Rights Reserved </i> </p>
 </body>
 </html>
