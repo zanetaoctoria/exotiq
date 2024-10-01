@@ -1,32 +1,109 @@
 {% extends 'base.html' %}
 
+{% load static %} <!-- Load static template tag -->
+
 {% block meta %}
 <title>Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap"
+  rel="stylesheet">
+<style>
+
+  /* Styling for the background image to cover the entire screen */
+  .container {
+    height: 100vh; /* Make sure the container covers the full viewport height */
+    width: 120px; /* Make sure it covers the full width */
+    background-image: url("https://i0.wp.com/luxexpose.com/wp-content/uploads/2018/03/LuxExpose-Vogue-Gigi_Hadid-2.jpg");
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+  }
+
+  /* Styling for the login box */
+  .login-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  p, label, input {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .min-h-screen {
+    min-height: 100vh; /* Ensures the flexbox covers the full height */
+  }
+</style>
 {% endblock meta %}
 
 {% block content %}
-<div class="login">
-  <h1>Login</h1>
+<div class="container">
+  <div class="min-h-screen flex items-center justify-center w-full py-12 px-4 sm:px-6 lg:px-8" >
+    <div class="max-w-md w-full space-y-8 login-container"> <!-- Tambahkan class login-container -->
+      <div>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900" style="font-family: 'Playfair Display', serif;">
+          Exotique
+        </h2>
+        <p class="mt-2 text-center text-sm text-gray-600" style="font-family: 'Playfair Display', serif;">
+          Enter your username and password to access your account.
+        </p>
+      </div>
 
-  <form method="POST" action="">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input class="btn login_btn" type="submit" value="Login" /></td>
-      </tr>
-    </table>
-  </form>
+      <form class="mt-8 space-y-6" method="POST" action="">
+        {% csrf_token %}
+        <div class="rounded-md shadow-sm" style="font-family: 'Playfair Display', serif;" >
+          <div class="mb-4">
+            <label for="username" class="sr-only">Username</label>
+            <input id="username" name="username" type="text" required
+              class="appearance-none rounded-t-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Username">
+          </div>
+          <div>
+            <label for="password" class="sr-only">Password</label>
+            <input id="password" name="password" type="password" required
+              class="appearance-none rounded-b-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Password">
+          </div>
+        </div>
 
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %} Don't have an account yet?
-  <a href="{% url 'main:register' %}">Register Now</a>
+        <div class="flex items-center justify-between" style="font-family: 'Playfair Display', serif;">
+          <div class="flex items-center">
+            <input id="remember_me" name="remember_me" type="checkbox"
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" style="font-family: 'Playfair Display', serif;">
+            <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+              Remember me
+            </label>
+          </div>
+          <div class="text-sm">
+            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500" style="font-family: 'Playfair Display', serif;">
+              Forgot your password?
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit"
+            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Sign in
+          </button>
+        </div>
+
+        <div class="text-center mt-4">
+          <p class="text-sm text-black" style="font-family: 'Playfair Display', serif;">
+            Don't have an account yet?
+            <a href="{% url 'main:register' %}" class="font-medium text-indigo-200 hover:text-indigo-300">
+              Register Now
+            </a>
+          </p>
+        </div>
+
+      </form>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}

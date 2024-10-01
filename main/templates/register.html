@@ -2,31 +2,117 @@
 
 {% block meta %}
 <title>Register</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+
+  /* Styling for the background image to cover the entire screen */
+  .container {
+    height: 100vh; /* Make sure the container covers the full viewport height */
+    width: 100%; /* Make sure it covers the full width */
+    background-image: url("https://i0.wp.com/luxexpose.com/wp-content/uploads/2018/03/LuxExpose-Vogue-Gigi_Hadid-2.jpg");
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+  }
+
+  /* Styling for the register box */
+  .register-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  p, label, input {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  input {
+    border: 2px solid black; /* Add a black border to the input fields */
+    padding: 0.5rem;
+    border-radius: 4px;
+    width: 100%; /* Ensure input boxes are full width */
+    font-size: 1rem;
+  }
+
+  /* Add focus state for the inputs */
+  input:focus {
+    outline: none;
+    border-color: #4F46E5; /* Indigo border when focused */
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5); /* Shadow effect on focus */
+  }
+
+  /* Styling the placeholder to ensure visibility */
+  ::placeholder {
+    color: #333; /* Darker placeholder color */
+    opacity: 1; /* Ensures the placeholder is fully opaque */
+  }
+
+  /* Increase text contrast for labels */
+  label {
+    color: #000; /* Ensure labels are visible with a dark color */
+  }
+
+</style>
 {% endblock meta %}
 
 {% block content %}
+<div class="container">
+  <div class="min-h-screen flex items-center justify-center w-full py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 register-container"> <!-- Container for form styling -->
+      <div>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900" style="font-family: 'Playfair Display', serif;">
+          Exotique
+        </h2>
+        <p class="mt-2 text-center text-sm text-gray-600" style="font-family: 'Playfair Display', serif;">
+          Create your account below.
+        </p>
+      </div>
 
-<div class="login">
-  <h1>Register</h1>
+      <form class="mt-8 space-y-6" method="POST">
+        {% csrf_token %}
+        <div class="rounded-md shadow-sm" style="font-family: 'Playfair Display', serif;">
+          {% for field in form %}
+          <div class="{% if not forloop.first %}mt-4{% endif %}">
+            <label for="{{ field.id_for_label }}" class="block text-sm font-bold">{{ field.label }}</label>
+            {{ field }}
+          </div>
+          {% endfor %}
+        </div>
 
-  <form method="POST">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input type="submit" name="submit" value="Daftar" /></td>
-      </tr>
-    </table>
-  </form>
+        <div>
+          <button type="submit"
+            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Register
+          </button>
+        </div>
 
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+      </form>
+
+      {% if messages %}
+      <div class="mt-4">
+        {% for message in messages %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <span class="block sm:inline">{{ message }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="text-center mt-4">
+        <p class="text-sm text-black" style="font-family: 'Playfair Display', serif;">
+          Already have an account?
+          <a href="{% url 'main:login' %}" class="font-medium text-indigo-600 hover:text-indigo-500">
+            Login here
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}

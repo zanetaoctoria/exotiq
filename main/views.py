@@ -9,7 +9,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.core import serializers
-from django.shortcuts import render, redirect   
+from django.shortcuts import render, redirect, reverse   
 from main.forms import ItemsEntryForm
 from main.models import Items
 
@@ -28,38 +28,28 @@ def show_main(request):
     item_entries = Items.objects.filter(user=request.user)
 
     
-    default_items  = [
-        {
-            'name' : 'Lanvin Black Gold Pencil Cat Leather Shoulder Bag',
-            'price': '54.500.000',
-            'description': 'the Pencil Cat is embellished with a precious sculptural handle'
-        },
+    # default_items  = [
+    #     {
+    #         'name' : 'Lanvin Black Gold Pencil Cat Leather Shoulder Bag',
+    #         'price': '54.500.000',
+    #         'description': 'the Pencil Cat is embellished with a precious sculptural handle'
+    #     },
 
-        {
-            'name' : 'Schiaparelli Saturn Bag',
-            'price': '100.000.000',
-            'description': 'Exclusively made'
-        },
+    #     {
+    #         'name' : 'Schiaparelli Saturn Bag',
+    #         'price': '100.000.000',
+    #         'description': 'Exclusively made'
+    #     },
 
-        {
-            'name' : 'Dolce and Gabbana Heart School Backpack',
-            'price': '250.000.000',
-            'description': 'Absolutely stunning, 100% Authentic, brand new with tags Dolce & Gabbana Women’s Bag'
-        }
-    ]
-
-    # new_candy = []
-    # for candy in candy_entries:
-    #     new_candy.append({'name': candy.name, 'price': candy.price, 'description': candy.description, 'sweetness': candy.sweetness})
-    # all_candies = default_candies + new_candy
-
-    new_items = []
-    for product in item_entries:
-        new_items.append ({'name' : product.name, 'price' : product.price, 'description' : product.description})
-    all_items = default_items  + new_items
+    #     {
+    #         'name' : 'Dolce and Gabbana Heart School Backpack',
+    #         'price': '250.000.000',
+    #         'description': 'Absolutely stunning, 100% Authentic, brand new with tags Dolce & Gabbana Women’s Bag'
+    #     }
+    # ]
     
     context = {
-        'items': all_items,
+        'items': item_entries,
         'name': request.user.username,
         'last_login': request.COOKIES['last_login'],
     }
@@ -128,13 +118,27 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+def edit_items(request, id):
+    # Get item entry berdasarkan id
+    item = Items.objects.get(pk = id)
 
-# def show_main(request):
-#     context = {
-#         'name' : 'Lanvin Black Gold Pencil Cat Leather Shoulder Bag',
-#         'price': '54.500.000',
-#         'description': 'the Pencil Cat is embellished with a precious sculptural handle'
-#     }
+    # Set item entry sebagai instance dari form
+    form = ItemsEntryForm(request.POST or None, instance=item)
 
-    # return render(request, "main.html", context)
-# Create your views here.
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_items.html", context)
+
+def delete_items(request, id):
+    # Get item berdasarkan id
+    item = Items.objects.get(pk = id)
+    # Hapus item
+    item.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+

@@ -1,78 +1,109 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Exotique</title>
+<!-- Include Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Background image for the hero section */
+  .hero-section {
+    height: 100vh; /* Make sure the container covers the full viewport height */
+    width: 1264px; /* Make sure it covers the full width */
+    background-image: url("https://media.allure.com/photos/5d4a16ca1a69db000843a186/master/w_1600,c_limit/gigi%20water.png");
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+  }
+</style>
+{% endblock meta %}
+
 {% block content %}
-<!DOCTYPE html>
-<head>
-    <title>exotiq</title>
-</head>
-<body>
-    <header>
-        <h1> Welcome to exotique</h1>
-        <h3> <i> Curating Exotic Beauty, Redefining Luxury </i></h3>
-        <div> 
-            <p> Nama : Rebecca Zaneta Octoria Hutajulu</p>
-            <p> Kelas : PBP-E </p>
-
-        </div>
-    </header>
-    <h2> Our Items </h2>
-    <ul>
-
-        {% for item in items %}
-        <li>
-            <div class="Items">
-                <h3>{{ item.name }}</h3>
-                <p><i> {{ item.description }} </i></p>
-                <p>Price: Rp {{ item.price }}</p>
-            </div>
-        </li>
-        {% endfor %}
+<!-- Navigation bar with minimal styling -->
+<nav class="flex justify-between items-center p-6 bg-transparent text-white absolute top-0 left-0 w-full z-10">
+    <div class="text-lg font-bold" style="font-family: 'Playfair Display', serif;">
+        <span class="p-4">Exotique</span>
+    </div>
+    <ul class="flex space-x-8 text-sm tracking-wider" style="font-family: 'Playfair Display', serif;">
+        <li><a href="#" class="hover:underline">About Us</a></li>
+        <li><a href="#" class="hover:underline">Items</a></li>
+        <li><a href="#" class="hover:underline">Categories</a></li>
     </ul>
-    
-    {% if not item_entries %}
-    <p>Belum ada data product pada exotiq.</p>
-    {% else %}
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Description</th>
-      </tr>
-    
-      {% comment %} Berikut cara memperlihatkan data product di bawah baris ini 
-      {% endcomment %} 
-      {% for item_entry in items_entries %}
-      <tr>
-        <td>{{item_entry.name}}</td>
-        <td>{{item_entry.price}}</td>
-        <td>{{item_entry.description}}</td>
-      </tr>
-      {% endfor %}
-    </table>
-    {% endif %}
-    
-    <br />
-    
-    <a href="{% url 'main:create_items_entry' %}">
-      <button>Add New Item Entry</button>
-    </a> 
+</nav>
 
-    <a href="{% url 'main:logout' %}">
-      <button>Logout</button>
-    </a>
-    
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
+<!-- Hero Section with Background Image -->
+<div class="relative flex items-center justify-center min-h-screen hero-section">
+    <!-- Hero Content -->
+        <div class="text-center font-bold" style="font-family: 'Playfair Display', serif;" color="white">
 
-    <p>  <i> 2024 exotique  - All Rights Reserved </i> </p>
-</body>
-</html>
+        <h1 class="text-6xl font-bold mt-2 tracking-wide text-white">Exotique</h1>
+        <h2 class="sentence case italic text-sm tracking-widest text-white mt-5">Curating Exotic Beauty, Redefining Luxury</h2>
 
+        <!-- Button -->
+        <div class="mt-8">
+            <a href="#" class="border border-white py-2 px-8 text-white rounded-full hover:bg-white hover:text-black transition duration-300">See Our Items</a>
+        </div>
+    </div>
+</div>
+
+<!-- Retain Items Display -->
+<div class="bg-white py-16">
+    <section class="container mx-auto text-center" style="font-family: 'Playfair Display', serif;">
+        <h2 class="text-4xl font-bold mb-10">Our Items</h2>
+
+        {% if not items %}
+        <section class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+            <img src="{% static 'image/sad-face.jpg' %}" alt="Sad face" class="w-32 h-32 mb-4" loading="lazy" />
+            <p class="text-center text-gray-600 mt-4">No product data available on Exotique</p>
+        </section>
+        {% else %}
+        
+        <!-- Items grid display with minimal styling -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 px-4 mb-12">
+            {% for item in items %}
+            <div class="bg-gray-100 p-6 shadow-lg rounded-lg form-style transition-transform duration-300 hover:scale-105" >
+                <h3 class="text-2xl font-bold mb-4">{{ item.name }}</h3>
+                <p class="text-gray-600 mb-2">Price: ${{ item.price }}</p>
+                <p class="text-gray-600 mb-4">{{ item.description }}</p>
+                <a href="{% url 'main:edit_items' item.pk %}" class="text-indigo-600 hover:underline">Edit</a> |
+                <a href="{% url 'main:delete_items' item.pk %}" class="text-red-600 hover:underline">Delete</a>
+            </div>
+            {% endfor %}
+        </section>
+        
+        <!-- Add new product button -->
+        <div class="flex justify-center mb-6 mt-10"> <!-- Added margin-top for spacing -->
+            <a href="{% url 'main:create_items_entry' %}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out">
+                Add New Product Entry
+            </a>
+        </div>
+
+        <div>
+          <a href="{% url 'main:logout' %}" class="text-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300", style="font-family: 'Playfair Display', serif;">
+            Logout
+          </a>
+        </div>
+
+
+        <div class="text-center text-gray-600 mb-4 mt-12". > <!-- Updated styling for simplicity -->
+          <p>Last Login: {{ last_login }}</p>
+        </div>
+      
+
+        {% endif %}
+    </section>
+</div>
+
+<!-- Footer Section -->
+<footer class="bg-gray-900 text-white py-6 mt-12">
+  <div class="container mx-auto text-center" style="font-family: 'Playfair Display', serif;">
+      <p class="text-lg font-semibold">Rebecca Zaneta Octoria Hutajulu</p>
+      <p class="text-sm">Class: PBP-E | NPM: 2306275065</p>
+      <p class="text-xs mt-4">&copy; 2024 Exotique. All Rights Reserved.</p>
+  </div>
+</footer>
 
 {% endblock content %}
 
 
-
-<!-- <h1>exotiq</h1>
-
-<p><strong>Name:</strong> Lanvin Black Gold Pencil Cat Leather Shoulder Bag</p>
-<p><strong>Price:</strong> Rp 54.500.000</p>
-<p><strong>Description:</strong> The Pencil Cat is embellished with a precious sculptural handle.</p> -->
