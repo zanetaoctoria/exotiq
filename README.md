@@ -143,12 +143,6 @@ Django mengingat pengguna yang sudah login melalui sistem sesi yang menggunakan 
 
 # TUGAS 5
 
-Berikut adalah format README yang telah dirapikan untuk tugas Anda:
-
----
-
-# TUGAS 5
-
 ## 1. Urutan Prioritas Pengambilan CSS Selector
 
 Urutan prioritas pengambilan CSS selector ditentukan oleh **specificity (spesifisitas)** sebagai berikut:
