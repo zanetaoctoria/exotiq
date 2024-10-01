@@ -139,8 +139,75 @@ Django mengingat pengguna yang sudah login melalui sistem sesi yang menggunakan 
 - Memfilter produk yang ditampilkan di **show_main** berdasarkan user yang sedang login.
 - Mengimpor **os**, dan sesuaikan variabel **DEBUG** di `settings.py` 
 
+</details> <details> <summary>Tugas 5</summary>
+
+# TUGAS 5
+
+Berikut adalah format README yang telah dirapikan untuk tugas Anda:
+
+---
+
+# TUGAS 5
+
+## 1. Urutan Prioritas Pengambilan CSS Selector
+
+Urutan prioritas pengambilan CSS selector ditentukan oleh **specificity (spesifisitas)** sebagai berikut:
+
+1. **Inline styles** (di atribut `style` HTML) memiliki prioritas tertinggi.
+2. **ID selector** (`#id`) memiliki prioritas lebih tinggi dibanding lainnya.
+3. **Class, attribute, dan pseudo-class selectors** (`.class`, `[attr]`, `:hover`, dll.) berada di bawah ID selector.
+4. **Element dan pseudo-element selectors** (`div`, `h1`, `::before`, dll.) memiliki prioritas paling rendah.
+5. Jika spesifisitas sama, urutan deklarasi (posisi di CSS) menentukan prioritas, di mana yang terakhir ditulis akan diprioritaskan.
+
+## 2. Pentingnya Responsive Design dalam Pengembangan Aplikasi Web
+
+**Responsive design** penting karena memastikan tampilan dan fungsi aplikasi web dapat diakses dengan baik di semua perangkat (desktop, tablet, ponsel). Hal ini memungkinkan pengguna menikmati konten secara optimal tanpa harus memperbesar (zoom-in) atau mengecilkan (zoom-out) tampilan secara berlebihan.
+
+**Contoh aplikasi yang sudah menerapkan responsive design**:
+- Spotify
+- WhatsApp
+- Line
+
+**Contoh aplikasi yang belum menerapkan responsive design**:
+- SIAK-NG
+
+## 3. Perbedaan Antara Margin, Border, dan Padding
+
+- **Margin**: Ruang kosong di luar elemen, mengatur jarak antara elemen satu dengan yang lain. 
+ 
+- **Border**: Garis yang mengelilingi elemen, berada di antara margin dan padding.
+
+- **Padding**: Ruang di dalam elemen, mengatur jarak antara konten elemen dan tepi elemen (border).
 
 
+## 4. Konsep Flexbox dan Grid Layout
 
+- **Flexbox (Flexible Box Layout)**:
+  Flexbox dirancang untuk tata letak satu dimensi, baik secara horizontal maupun vertikal. Elemen di dalam **flex container** dapat diatur agar beradaptasi secara otomatis dengan ukuran kontainer, membuatnya ideal untuk tata letak dinamis seperti navbar atau card yang dapat diselaraskan, dipusatkan, atau dibagi ruangnya dengan mudah.
 
+- **Grid Layout**:
+  Grid Layout digunakan untuk tata letak dua dimensi, di mana elemen dapat diatur dalam baris dan kolom. Grid memungkinkan kontrol yang lebih presisi atas posisi elemen di dalam grid, membuatnya cocok untuk desain yang lebih kompleks, seperti dashboard atau layout halaman utama.
 
+Kegunaan utama **Flexbox**  untuk tata letak yang fleksibel dan satu dimensi, sedangkan **Grid Layout** lebih cocok untuk tata letak dua dimensi yang lebih kompleks dan terstruktur.
+
+## 5. Implementasi Checklist secara Step-by-Step
+
+1. Menambahkan fungsi baru di **views.py** yaitu **edit_item** dan **delete_item**, yang masing-masing berfungsi untuk mengedit dan menghapus data produk yang sudah ada.
+   
+2. Mengintegrasikan path di **urls.py** pada app **main** untuk menghubungkan fungsi edit dan delete tersebut.
+
+3. Membuat folder **static** untuk menyimpan file CSS dan gambar-gambar yang akan digunakan dalam aplikasi.
+
+4. Melakukan perubahan pada **settings.py** agar dapat menggunakan **static files** yang sudah dibuat.
+
+5. Mengubah **base.html** untuk menggunakan **Tailwind CSS**.
+
+6. Membuat **navbar.html** yang digunakan di **main.html**, serta **navbar2.html** yang digunakan di **edit_item.html** dan **create_item_entry.html**. Selanjutnya, saya menyesuaikan tampilan HTML agar sesuai dengan kebutuhan.
+
+7. Melakukan benchmarking terhadap website **Dolce & Gabbana** untuk mengedit bagian **main.html**.
+
+8. Membuat **product_list.html** untuk menampilkan daftar produk yang sudah ditambahkan oleh pengguna, serta menambahkan tombol **edit** dan **delete** pada setiap produk.
+
+9. Mengedit **login.html** dan **register.html** agar sesuai dengan preferensi tampilan yang diinginkan.
+
+10. Mendesain keseluruhan aplikasi menggunakan **Tailwind CSS** dan mengedit **global.css** untuk mendefinisikan desain yang konsisten di seluruh aplikasi.
