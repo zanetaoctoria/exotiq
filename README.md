@@ -198,7 +198,7 @@ Kegunaan utama **Flexbox**  untuk tata letak yang fleksibel dan satu dimensi, se
 
 6. Membuat **navbar.html** yang digunakan di **main.html**, serta **navbar2.html** yang digunakan di **edit_item.html** dan **create_item_entry.html**. Selanjutnya, saya menyesuaikan tampilan HTML agar sesuai dengan kebutuhan.
 
-7. Melakukan benchmarking terhadap website **Dolce & Gabbana** untuk mengedit bagian **main.html**.
+7. Melakukan benchmarking terhadap website berbagai untuk mengedit bagian **main.html**.
 
 8. Membuat **product_list.html** untuk menampilkan daftar produk yang sudah ditambahkan oleh pengguna, serta menambahkan tombol **edit** dan **delete** pada setiap produk.
 
