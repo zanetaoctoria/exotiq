@@ -12,52 +12,22 @@ from django.core import serializers
 from django.shortcuts import render, redirect, reverse   
 from main.forms import ItemsEntryForm
 from main.models import Items
-
-# def show_main(request):
-#     items = Items.objects.all()  # Mengambil semua data dari model Items
-#     context = {
-#         'items': items
-#     }
-#     return render(request, 'main.html', context)
-
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.utils.html import strip_tags
 from django.shortcuts import render
 
 @login_required(login_url='/login')
 
 def show_main(request):
-    item_entries = Items.objects.filter(user=request.user)
-
-    
-    # default_items  = [
-    #     {
-    #         'name' : 'Lanvin Black Gold Pencil Cat Leather Shoulder Bag',
-    #         'price': '54.500.000',
-    #         'description': 'the Pencil Cat is embellished with a precious sculptural handle'
-    #     },
-
-    #     {
-    #         'name' : 'Schiaparelli Saturn Bag',
-    #         'price': '100.000.000',
-    #         'description': 'Exclusively made'
-    #     },
-
-    #     {
-    #         'name' : 'Dolce and Gabbana Heart School Backpack',
-    #         'price': '250.000.000',
-    #         'description': 'Absolutely stunning, 100% Authentic, brand new with tags Dolce & Gabbana Women’s Bag'
-    #     }
-    # ]
-    
     context = {
-        'items': item_entries,
         'name': request.user.username,
         'last_login': request.COOKIES['last_login'],
     }
-
     return render(request, "main.html", context)
 
 def show_xml(request):
-    data = Items.objects.all()
+    data = Items.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_xml_by_id(request, id):
@@ -65,7 +35,7 @@ def show_xml_by_id(request, id):
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_json(request):
-    data = Items.objects.all()
+    data = Items.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def show_json_by_id(request, id):
@@ -106,6 +76,8 @@ def login_user(request):
             response = HttpResponseRedirect(reverse("main:show_main"))
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
+      else:
+            messages.error(request, "Invalid username or password. Please try again.")
 
    else:
       form = AuthenticationForm(request)
@@ -141,4 +113,22 @@ def delete_items(request, id):
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
 
+@csrf_exempt
+@require_POST
+def add_items_entry_ajax(request):
+    # Get data from POST request
+    name = strip_tags(request.POST.get("name"))
+    price = strip_tags(request.POST.get("price"))
+    description = strip_tags(request.POST.get("description"))
+    user = request.user
 
+    # Create a new item entry
+    new_item = Items(
+        name=name, 
+        price=price, 
+        description=description, 
+        user=user
+    )
+    new_item.save()
+
+    return HttpResponse(b"CREATED", status=201)

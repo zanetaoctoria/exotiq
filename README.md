@@ -196,7 +196,7 @@ Kegunaan utama **Flexbox**  untuk tata letak yang fleksibel dan satu dimensi, se
 
 5. Mengubah **base.html** untuk menggunakan **Tailwind CSS**.
 
-6. Membuat **navbar.html** yang digunakan di **main.html**, serta **navbar2.html** yang digunakan di **edit_item.html** dan **create_item_entry.html**. Selanjutnya, saya menyesuaikan tampilan HTML agar sesuai dengan kebutuhan.
+6. Membuat **navbar.html** dan **create_items_entry.html**. Selanjutnya, saya menyesuaikan tampilan HTML agar sesuai dengan kebutuhan.
 
 7. Melakukan benchmarking terhadap website berbagai untuk mengedit bagian **main.html**.
 
@@ -205,3 +205,35 @@ Kegunaan utama **Flexbox**  untuk tata letak yang fleksibel dan satu dimensi, se
 9. Mengedit **login.html** dan **register.html** agar sesuai dengan preferensi tampilan yang diinginkan.
 
 10. Mendesain keseluruhan aplikasi menggunakan **Tailwind CSS** dan mengedit **global.css** untuk mendefinisikan desain yang konsisten di seluruh aplikasi.
+
+# TUGAS 6
+
+## 1. Manfaat dari Penggunaan JavaScript dalam Pengembangan Aplikasi Web
+JavaScript memungkinkan halaman web semakin interaktif dan dinamis, seperti validasi form, animasi, serta memperbarui konten tanpa harus me-refresh seluruh halaman. Efeknya adalah memberikan pengguna pengalaman yang lebih responsif dan interaktif.
+
+## 2. Fungsi dari Penggunaan `await` Ketika Menggunakan `fetch()`
+`await` digunakan untuk menunggu hasil dari `fetch()` sebelum melanjutkan eksekusi kode. Tanpa `await`, kode berikutnya akan dijalankan sebelum hasil `fetch()` selesai, sehingga kita mungkin bekerja dengan data yang belum tersedia.
+
+## 3. Mengapa Perlu Menggunakan Decorator `csrf_exempt` pada View yang Digunakan untuk AJAX POST
+`csrf_exempt` digunakan untuk menonaktifkan perlindungan CSRF pada view tertentu agar permintaan AJAX POST dari klien eksternal dapat diterima tanpa memerlukan token CSRF.
+
+## 4. Mengapa Pembersihan Data Input Pengguna Dilakukan di Backend Juga
+Pembersihan di backend lebih aman karena data dari frontend bisa dimanipulasi oleh pengguna. Backend memastikan integritas dan keamanan data, menghindari input yang berbahaya atau tidak valid.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
+
+- Tambahkan fungsi add_item_entry_ajax di views.py yang bertugas memasukkan data item baru ke database.
+- Atur URL di urls.py yang mengarah ke fungsi view tersebut.
+- Ubah <div> yang menampung daftar produk menjadi <div id="item_entry_cards"></div>.
+- Tambahkan modal form untuk input data item yang bisa muncul sebagai popup.
+- Implementasikan fungsi showModal() dan hideModal() untuk kontrol modal.
+- Buat getItemEntries() untuk mengambil data item dari server dan refreshItemEntries() untuk memperbarui tampilan daftar item.
+- Tambahkan event listener pada form submission untuk mengaktifkan AJAX call yang akan menambahkan item baru ke database melalui fungsi addItemEntry().
+- Refresh konten halaman menggunakan refreshItemEntries() setelah item berhasil ditambahkan tanpa perlu reload halaman.
+- Gunakan strip_tags() di backend untuk membersihkan data dari tag HTML yang tidak diinginkan.
+- Implementasikan DOMPurify di frontend untuk membersihkan output sebelum ditampilkan ke user.
+
+
+
+
+
