@@ -206,6 +206,8 @@ Kegunaan utama **Flexbox**  untuk tata letak yang fleksibel dan satu dimensi, se
 
 10. Mendesain keseluruhan aplikasi menggunakan **Tailwind CSS** dan mengedit **global.css** untuk mendefinisikan desain yang konsisten di seluruh aplikasi.
 
+</details> <details> <summary>Tugas 6</summary>
+
 # TUGAS 6
 
 ## 1. Manfaat dari Penggunaan JavaScript dalam Pengembangan Aplikasi Web
