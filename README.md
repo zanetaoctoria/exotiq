@@ -223,17 +223,18 @@ JavaScript memungkinkan halaman web semakin interaktif dan dinamis, seperti vali
 Pembersihan di backend lebih aman karena data dari frontend bisa dimanipulasi oleh pengguna. Backend memastikan integritas dan keamanan data, menghindari input yang berbahaya atau tidak valid.
 
 ## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
+  - Buat `add_item_entry_ajax` di `views.py` yang bertanggung jawab atas penambahan data item baru ke database.
+  - Konfigurasikan `urls.py` untuk mengarahkan ke fungsi view yang telah ditentukan.
+  - Ubah `<div>` yang menampilkan daftar produk menjadi `<div id="item_entry_cards"></div>` agar bisa diperbarui secara dinamis.
+  - Tambahkan modal form dalam HTML yang digunakan untuk input data item. Modal ini akan muncul sebagai popup.
+  - Implementasikan `showModal()` dan `hideModal()` untuk mengontrol tampilan modal.
+  - Buat `getItemEntries()` untuk mengambil data item dari server.
+  - Buat `refreshItemEntries()` untuk memperbarui tampilan daftar item secara asinkron setelah data baru ditambahkan.
+  - Tambahkan event listener pada form modal untuk mengaktifkan fungsi `addItemEntry()` yang menjalankan AJAX call untuk menambah item baru ke database.
+  - Setelah item berhasil ditambahkan, gunakan `refreshItemEntries()` untuk memperbarui konten halaman tanpa perlu memuat ulang seluruh halaman.
+  - Gunakan `strip_tags()` pada backend untuk membersihkan input dari tag HTML yang tidak diinginkan.
+  - Implementasikan DOMPurify di frontend untuk mensterilkan output sebelum ditampilkan kepada pengguna.
 
-- Tambahkan fungsi add_item_entry_ajax di views.py yang bertugas memasukkan data item baru ke database.
-- Atur URL di urls.py yang mengarah ke fungsi view tersebut.
-- Ubah <div> yang menampung daftar produk menjadi <div id="item_entry_cards"></div>.
-- Tambahkan modal form untuk input data item yang bisa muncul sebagai popup.
-- Implementasikan fungsi showModal() dan hideModal() untuk kontrol modal.
-- Buat getItemEntries() untuk mengambil data item dari server dan refreshItemEntries() untuk memperbarui tampilan daftar item.
-- Tambahkan event listener pada form submission untuk mengaktifkan AJAX call yang akan menambahkan item baru ke database melalui fungsi addItemEntry().
-- Refresh konten halaman menggunakan refreshItemEntries() setelah item berhasil ditambahkan tanpa perlu reload halaman.
-- Gunakan strip_tags() di backend untuk membersihkan data dari tag HTML yang tidak diinginkan.
-- Implementasikan DOMPurify di frontend untuk membersihkan output sebelum ditampilkan ke user.
 
 
 
