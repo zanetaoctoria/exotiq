@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import edit_items
+from main.views import create_mood_flutter, edit_items
 from main.views import delete_items
 from main.views import login_user
 from main.views import register
@@ -23,5 +23,4 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     path('create-items-entry-ajax', add_items_entry_ajax, name='add_items_entry_ajax'),
-
-]
+    path('create-flutter/', create_mood_flutter, name='create_mood_flutter'),]
